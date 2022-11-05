@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"os"
 
 	"github.com/mpaliwoda/interpreter-book/lexer"
 	"github.com/mpaliwoda/interpreter-book/token"
@@ -26,7 +27,12 @@ func Start(in io.Reader, out io.Writer) {
 		l := lexer.New(line)
 
 		for tok := l.NextToken(); tok.Type != token.EOF; tok = l.NextToken() {
-            fmt.Fprintf(out, "%+v\n", tok)
+			if tok.Literal == "exit" {
+				fmt.Printf("Bye!\n")
+				os.Exit(0)
+			}
+
+			fmt.Fprintf(out, "%+v\n", tok)
 		}
 	}
 }
