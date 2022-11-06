@@ -1,6 +1,6 @@
 package ast
 
-import "github.com/mpaliwoda/interpreter-book/token"
+import "github.com/mpaliwoda/monkeylang/token"
 
 type IntegerLiteral struct {
 	Token token.Token

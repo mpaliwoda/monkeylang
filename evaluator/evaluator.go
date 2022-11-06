@@ -1,8 +1,8 @@
 package evaluator
 
 import (
-	"github.com/mpaliwoda/interpreter-book/ast"
-	"github.com/mpaliwoda/interpreter-book/object"
+	"github.com/mpaliwoda/monkeylang/ast"
+	"github.com/mpaliwoda/monkeylang/object"
 )
 
 var (

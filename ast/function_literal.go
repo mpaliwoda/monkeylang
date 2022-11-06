@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"strings"
 
-	"github.com/mpaliwoda/interpreter-book/token"
+	"github.com/mpaliwoda/monkeylang/token"
 )
 
 type FunctionLiteral struct {

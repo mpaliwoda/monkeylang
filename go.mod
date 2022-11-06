@@ -1,3 +1,3 @@
-module github.com/mpaliwoda/interpreter-book
+module github.com/mpaliwoda/monkeylang
 
 go 1.18

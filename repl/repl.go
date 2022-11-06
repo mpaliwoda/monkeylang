@@ -6,9 +6,9 @@ import (
 	"io"
 	"os"
 
-	"github.com/mpaliwoda/interpreter-book/evaluator"
-	"github.com/mpaliwoda/interpreter-book/lexer"
-	"github.com/mpaliwoda/interpreter-book/parser"
+	"github.com/mpaliwoda/monkeylang/evaluator"
+	"github.com/mpaliwoda/monkeylang/lexer"
+	"github.com/mpaliwoda/monkeylang/parser"
 )
 
 const PROMPT = "$> "

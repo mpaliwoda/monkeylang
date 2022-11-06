@@ -3,7 +3,7 @@ package ast
 import (
 	"testing"
 
-	"github.com/mpaliwoda/interpreter-book/token"
+	"github.com/mpaliwoda/monkeylang/token"
 )
 
 func TestString(t *testing.T) {

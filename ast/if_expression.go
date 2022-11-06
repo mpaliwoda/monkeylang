@@ -3,7 +3,7 @@ package ast
 import (
 	"bytes"
 
-	"github.com/mpaliwoda/interpreter-book/token"
+	"github.com/mpaliwoda/monkeylang/token"
 )
 
 type IfExpression struct {
