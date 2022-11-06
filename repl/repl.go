@@ -6,6 +6,7 @@ import (
 	"io"
 	"os"
 
+	"github.com/mpaliwoda/interpreter-book/evaluator"
 	"github.com/mpaliwoda/interpreter-book/lexer"
 	"github.com/mpaliwoda/interpreter-book/parser"
 )
@@ -40,8 +41,12 @@ func Start(in io.Reader, out io.Writer) {
 			continue
 		}
 
-		io.WriteString(out, program.String())
-		io.WriteString(out, "\n")
+		evaluated := evaluator.Eval(program)
+		if evaluated != nil {
+			io.WriteString(out, evaluated.Inspect())
+			io.WriteString(out, "\n")
+		}
+
 	}
 }
 
