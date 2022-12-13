@@ -73,6 +73,9 @@ if (5 < 10) {
 if (result == 15) {} 
 
 if (result != 10) {}
+
+"foobar"
+"foo bar"
 `
 
 	tests := []struct {
@@ -146,6 +149,9 @@ if (result != 10) {}
 		{token.RPAREN, ")"},
 		{token.LBRACE, "{"},
 		{token.RBRACE, "}"},
+		{token.STRING, "foobar"},
+		{token.STRING, "foo bar"},
+		{token.EOF, ""},
 	}
 
 	l := New(input)
