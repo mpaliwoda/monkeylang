@@ -366,7 +366,7 @@ func TestStringConcatenation(t *testing.T) {
 
 }
 
-func TestBuiltingFunctions(t *testing.T) {
+func TestBuiltinFunctions(t *testing.T) {
 	tests := []struct {
 		input    string
 		expected interface{}
@@ -376,6 +376,10 @@ func TestBuiltingFunctions(t *testing.T) {
 		{`len("hello world")`, 11},
 		{`len(1)`, "argument to `len` not supported. got INTEGER"},
 		{`len("one", "two")`, "wrong number of arguments. want=1, got=2"},
+		{`len([1, 2, 3])`, 3},
+		{`len([])`, 0},
+		{`first([])`, nil},
+		{`first([1, 2])`, 1},
 	}
 
 	for _, tt := range tests {
@@ -393,6 +397,36 @@ func TestBuiltingFunctions(t *testing.T) {
 			if errObj.Message != expected {
 				t.Errorf("wrong error message. expected=%q, got=%q", expected, errObj.Message)
 			}
+		case nil:
+			testNullObject(t, evaluated)
+		}
+	}
+}
+
+func TestFirstWithString(t *testing.T) {
+	tests := []struct {
+		input    string
+		expected interface{}
+	}{
+		{`first("")`, nil},
+		{`first("test")`, "t"},
+	}
+
+	for _, tt := range tests {
+		evaluated := testEval(tt.input)
+
+		switch exp := tt.expected.(type) {
+			case string:
+				strObj, ok := evaluated.(*object.String)
+				if !ok {
+					t.Errorf("evaluated is not object.String, got=%T (%+v)", evaluated, evaluated)
+				}
+
+				if strObj.Value != exp {
+					t.Errorf("incorrect value. expected=%s, got=%s", exp, strObj.Value)
+				}
+			case nil:
+				testNullObject(t, evaluated)
 		}
 	}
 }
