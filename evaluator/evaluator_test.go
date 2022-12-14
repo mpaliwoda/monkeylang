@@ -380,6 +380,8 @@ func TestBuiltinFunctions(t *testing.T) {
 		{`len([])`, 0},
 		{`first([])`, nil},
 		{`first([1, 2])`, 1},
+		{`last([])`, nil},
+		{`last([1, 2])`, 2},
 	}
 
 	for _, tt := range tests {
@@ -403,30 +405,32 @@ func TestBuiltinFunctions(t *testing.T) {
 	}
 }
 
-func TestFirstWithString(t *testing.T) {
+func TestBuiltinWithString(t *testing.T) {
 	tests := []struct {
 		input    string
 		expected interface{}
 	}{
 		{`first("")`, nil},
 		{`first("test")`, "t"},
+		{`last("")`, nil},
+		{`last("dang")`, "g"},
 	}
 
 	for _, tt := range tests {
 		evaluated := testEval(tt.input)
 
 		switch exp := tt.expected.(type) {
-			case string:
-				strObj, ok := evaluated.(*object.String)
-				if !ok {
-					t.Errorf("evaluated is not object.String, got=%T (%+v)", evaluated, evaluated)
-				}
+		case string:
+			strObj, ok := evaluated.(*object.String)
+			if !ok {
+				t.Errorf("evaluated is not object.String, got=%T (%+v)", evaluated, evaluated)
+			}
 
-				if strObj.Value != exp {
-					t.Errorf("incorrect value. expected=%s, got=%s", exp, strObj.Value)
-				}
-			case nil:
-				testNullObject(t, evaluated)
+			if strObj.Value != exp {
+				t.Errorf("incorrect value. expected=%s, got=%s", exp, strObj.Value)
+			}
+		case nil:
+			testNullObject(t, evaluated)
 		}
 	}
 }
