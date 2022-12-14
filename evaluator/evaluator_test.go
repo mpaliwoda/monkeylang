@@ -384,6 +384,8 @@ func TestBuiltinFunctions(t *testing.T) {
 		{`last([1, 2])`, 2},
 		{`rest([])`, []int64{}},
 		{`rest([1, 2, 3, 4])`, []int64{2, 3, 4}},
+		{`push([], 1)`, []int64{1}},
+		{`push([1], 2, 3, 4)`, []int64{1, 2, 3, 4}},
 	}
 
 	for _, tt := range tests {
@@ -427,6 +429,7 @@ func TestBuiltinWithString(t *testing.T) {
 		{`last("dang")`, "g"},
 		{`rest("")`, ""},
 		{`rest("dang")`, "ang"},
+		{`push("", "t", "b")`, "tb"},
 	}
 
 	for _, tt := range tests {

@@ -1,6 +1,10 @@
 package evaluator
 
-import "github.com/mpaliwoda/monkeylang/object"
+import (
+	"strings"
+
+	"github.com/mpaliwoda/monkeylang/object"
+)
 
 var builtins = map[string]*object.Builtin{
 	"len": {
@@ -84,6 +88,37 @@ var builtins = map[string]*object.Builtin{
 				return &object.Array{Elements: []object.Object{}}
 			default:
 				return newError("argument to `last` not supported. got %s", args[0].Type())
+			}
+		},
+	},
+	"push": {
+		Fn: func(args ...object.Object) object.Object {
+			if len(args) < 2 {
+				return newError("wrong number of arguments. want>=2, got=%d", len(args))
+			}
+
+			switch dst:=args[0].(type) {
+			case *object.String:
+				elements := []string{dst.Value}
+				for ix, arg := range args[1:] {
+					switch arg := arg.(type) {
+					case *object.String:
+						elements = append(elements, arg.Value)
+					default:
+						return newError("argument %d not supported for dst type String. got %s",ix, arg.Type())
+					}
+				}
+				return &object.String{Value: strings.Join(elements, "")}
+			case *object.Array:
+				newElements := make([]object.Object, len(dst.Elements))
+				copy(newElements, dst.Elements)
+				for _, arg := range args[1:] {
+					newElements = append(newElements, arg)	
+				}
+
+				return &object.Array{Elements: newElements}
+			default:
+				return newError("first argument to `push` not supported. got %s", args[0].Type())
 			}
 		},
 	},
