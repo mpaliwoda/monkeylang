@@ -76,7 +76,7 @@ var builtins = map[string]*object.Builtin{
 			switch arg := args[0].(type) {
 			case *object.String:
 				if len(arg.Value) > 1 {
-					return &object.String{Value: arg.Value[1 : len(arg.Value)]}
+					return &object.String{Value: arg.Value[1:len(arg.Value)]}
 				}
 				return &object.String{Value: ""}
 			case *object.Array:
@@ -97,7 +97,7 @@ var builtins = map[string]*object.Builtin{
 				return newError("wrong number of arguments. want>=2, got=%d", len(args))
 			}
 
-			switch dst:=args[0].(type) {
+			switch dst := args[0].(type) {
 			case *object.String:
 				elements := []string{dst.Value}
 				for ix, arg := range args[1:] {
@@ -105,7 +105,7 @@ var builtins = map[string]*object.Builtin{
 					case *object.String:
 						elements = append(elements, arg.Value)
 					default:
-						return newError("argument %d not supported for dst type String. got %s",ix, arg.Type())
+						return newError("argument %d not supported for dst type String. got %s", ix, arg.Type())
 					}
 				}
 				return &object.String{Value: strings.Join(elements, "")}
@@ -113,7 +113,7 @@ var builtins = map[string]*object.Builtin{
 				newElements := make([]object.Object, len(dst.Elements))
 				copy(newElements, dst.Elements)
 				for _, arg := range args[1:] {
-					newElements = append(newElements, arg)	
+					newElements = append(newElements, arg)
 				}
 
 				return &object.Array{Elements: newElements}
