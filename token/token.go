@@ -28,6 +28,7 @@ const (
 	BANG   = "!"
 
 	COMMA     = ","
+	COLON	  = ":"
 	SEMICOLON = ";"
 
 	LPAREN   = "("
