@@ -5,7 +5,7 @@ import (
 	"os"
 	"os/user"
 
-	"github.com/mpaliwoda/monkeylang/repl"
+	"monkeylang/repl"
 )
 
 const MONKEY_FACE = `            __,__

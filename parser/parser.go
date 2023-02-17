@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/mpaliwoda/monkeylang/ast"
-	"github.com/mpaliwoda/monkeylang/lexer"
-	"github.com/mpaliwoda/monkeylang/token"
+	"monkeylang/ast"
+	"monkeylang/lexer"
+	"monkeylang/token"
 )
 
 const (

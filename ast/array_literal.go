@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"strings"
 
-	"github.com/mpaliwoda/monkeylang/token"
+	"monkeylang/token"
 )
 
 type ArrayLiteral struct {

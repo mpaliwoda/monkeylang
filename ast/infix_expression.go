@@ -3,7 +3,7 @@ package ast
 import (
 	"bytes"
 
-	"github.com/mpaliwoda/monkeylang/token"
+	"monkeylang/token"
 )
 
 type InfixExpression struct {

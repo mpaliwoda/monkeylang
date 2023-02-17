@@ -1,7 +1,7 @@
 package ast
 
 import (
-	"github.com/mpaliwoda/monkeylang/token"
+	"monkeylang/token"
 )
 
 type ExpressionStatement struct {

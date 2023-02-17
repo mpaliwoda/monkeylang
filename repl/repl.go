@@ -6,10 +6,10 @@ import (
 	"io"
 	"os"
 
-	"github.com/mpaliwoda/monkeylang/evaluator"
-	"github.com/mpaliwoda/monkeylang/lexer"
-	"github.com/mpaliwoda/monkeylang/object"
-	"github.com/mpaliwoda/monkeylang/parser"
+	"monkeylang/evaluator"
+	"monkeylang/lexer"
+	"monkeylang/object"
+	"monkeylang/parser"
 )
 
 const PROMPT = "$> "

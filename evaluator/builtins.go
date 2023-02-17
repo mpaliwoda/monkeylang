@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/mpaliwoda/monkeylang/object"
+	"monkeylang/object"
 )
 
 var builtins = map[string]*object.Builtin{

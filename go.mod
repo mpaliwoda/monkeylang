@@ -1,3 +1,3 @@
-module github.com/mpaliwoda/monkeylang
+module monkeylang
 
 go 1.18
