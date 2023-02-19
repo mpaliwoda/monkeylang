@@ -13,6 +13,8 @@ const (
 	BUILTIN_OBJ      = "BULTIN"
 	ARRAY_OBJ        = "ARRAY"
 	HASH_OBJ         = "HASH"
+	QUOTE_OBJ        = "QUOTE"
+	MACRO_OBJ        = "MACRO"
 )
 
 type Object interface {

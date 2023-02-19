@@ -15,6 +15,7 @@ const (
 	INT    = "INT"
 	STRING = "STRING"
 	NULL   = "NULL"
+	MACRO  = "MACRO"
 
 	ASSIGN   = "="
 	PLUS     = "+"
@@ -59,6 +60,7 @@ var keywords = map[string]TokenType{
 	"true":  TRUE,
 	"false": FALSE,
 	"null":  NULL,
+	"macro": MACRO,
 }
 
 func LookupIdentifier(identifier string) TokenType {
